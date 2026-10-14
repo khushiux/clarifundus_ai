@@ -1,0 +1,9 @@
+{
+  "architecture": "resnet18",
+  "checkpoint_path": "C:\\Users\\khush\\OneDrive\\Desktop\\ClariFundus AI\\artifacts\\models\\resnet18_best.pt",
+  "temperature": 1.2007,
+  "uncalibrated_ece": 0.0817,
+  "calibrated_ece": 0.0553,
+  "uncalibrated_brier": 0.4635,
+  "calibrated_brier": 0.4531
+}

@@ -1,0 +1,70 @@
+# RetinaTrust 2.0 System Configuration
+
+model:
+  architecture: "densenet121"  # 'densenet121', 'swin_t', 'resnet18', 'efficientnet_b0', or 'ensemble'
+  pretrained: true
+  num_classes: 5
+  input_size: [224, 224]
+  use_coral: false             # Set True to enable CORAL ordinal ranking loss
+  norm_mean: [0.485, 0.456, 0.406]
+  norm_std: [0.229, 0.224, 0.225]
+
+preprocessing:
+  use_ben_graham: true         # Illumination normalization & vignette reduction
+  apply_clahe: true            # Local contrast adaptive histogram equalization
+  clip_limit: 2.0
+
+training:
+  epochs: 15
+  batch_size: 16
+  num_workers: 0
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  class_weighting: "balanced"  # 'balanced' or 'none'
+  early_stopping_patience: 4
+  seed: 42
+  target_metric: "val_qwk"     # Quadratic Weighted Kappa
+  device: "auto"               # 'auto', 'cuda', or 'cpu'
+
+smoke_test:
+  enabled: false
+  max_samples: 60
+  epochs: 2
+  batch_size: 4
+
+data_split:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  stratified: true
+  seed: 42
+
+uncertainty:
+  min_confidence_threshold: 0.55
+  max_entropy_threshold: 1.60
+  temperature: 1.2007
+
+conformal:
+  coverage_level_90: 0.90
+  coverage_level_95: 0.95
+  q_hat_90: 0.88
+  q_hat_95: 0.95
+
+image_quality:
+  min_width: 200
+  min_height: 200
+  blur_laplacian_threshold: 60.0
+  brightness_low_threshold: 20.0
+  brightness_high_threshold: 240.0
+
+explainability:
+  method: "gradcam_pp"         # 'gradcam_pp' or 'gradcam'
+  target_layer: "auto"
+  colormap: "jet"
+  alpha: 0.45
+  saliency_threshold: 0.15     # Filters background activations
+
+paths:
+  checkpoint_dir: "artifacts/models"
+  manifest_dir: "artifacts/manifests"
+  report_dir: "reports/runs"

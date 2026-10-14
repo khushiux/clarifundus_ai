@@ -1,0 +1,48 @@
+{
+  "dataset_key": "idrid",
+  "dataset_name": "IDRiD (Indian Diabetic Retinopathy Image Dataset)",
+  "csv_path": "C:\\Users\\khush\\Downloads\\Indian Diabetic Retinopathy Image Dataset\\B. Disease Grading\\2. Groundtruths\\a. IDRiD_Disease Grading_Training Labels.csv",
+  "image_dir": "C:\\Users\\khush\\Downloads\\Indian Diabetic Retinopathy Image Dataset\\B. Disease Grading\\1. Original Images\\a. Training Set",
+  "total_records": 413,
+  "resolved_images": 413,
+  "missing_images_count": 0,
+  "missing_images_sample": [],
+  "unreadable_images_count": 0,
+  "unreadable_images_sample": [],
+  "duplicate_images_detected": 0,
+  "duplicate_sample": [],
+  "grade_distribution": {
+    "0": {
+      "name": "No DR",
+      "count": 134,
+      "percentage": 32.45
+    },
+    "1": {
+      "name": "Mild DR",
+      "count": 20,
+      "percentage": 4.84
+    },
+    "2": {
+      "name": "Moderate DR",
+      "count": 136,
+      "percentage": 32.93
+    },
+    "3": {
+      "name": "Severe DR",
+      "count": 74,
+      "percentage": 17.92
+    },
+    "4": {
+      "name": "Proliferative DR",
+      "count": 49,
+      "percentage": 11.86
+    }
+  },
+  "formats_detected": {
+    "JPEG": 413
+  },
+  "average_dimensions": [
+    4288,
+    2848
+  ]
+}

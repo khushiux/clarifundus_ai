@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: retinatrust-web
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+      - ./reports:/app/reports
+    environment:
+      - RETINATRUST_DEVICE=cpu
+    command: ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+  api:
+    build: .
+    container_name: retinatrust-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+      - ./reports:/app/reports
+    environment:
+      - RETINATRUST_DEVICE=cpu
+    command: ["uvicorn", "retinatrust.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

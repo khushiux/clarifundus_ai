@@ -1,0 +1,44 @@
+# RetinaTrust Dataset Locations & Schema Configuration
+
+aptos:
+  name: "APTOS 2019 Blindness Detection"
+  description: "Primary dataset for diabetic retinopathy severity classification"
+  # Search order: local raw folder first, then local download folder
+  candidate_paths:
+    - csv_path: "data/raw/aptos/train.csv"
+      image_dir: "data/raw/aptos/train_images"
+    - csv_path: "C:/Users/khush/Downloads/aptos2019-blindness-detection/train.csv"
+      image_dir: "C:/Users/khush/Downloads/aptos2019-blindness-detection/train_images"
+  id_column: "id_code"
+  label_column: "diagnosis"
+  image_extension_fallback: ".png"
+  num_classes: 5
+  class_labels:
+    0: "No DR"
+    1: "Mild DR"
+    2: "Moderate DR"
+    3: "Severe DR"
+    4: "Proliferative DR"
+
+idrid:
+  name: "IDRiD (Indian Diabetic Retinopathy Image Dataset)"
+  description: "Independent external dataset for evaluating cross-domain generalization"
+  candidate_paths:
+    - csv_path: "data/raw/idrid/B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv"
+      image_dir: "data/raw/idrid/B. Disease Grading/1. Original Images/a. Training Set"
+      test_csv_path: "data/raw/idrid/B. Disease Grading/2. Groundtruths/b. IDRiD_Disease Grading_Testing Labels.csv"
+      test_image_dir: "data/raw/idrid/B. Disease Grading/1. Original Images/b. Testing Set"
+    - csv_path: "C:/Users/khush/Downloads/Indian Diabetic Retinopathy Image Dataset/B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv"
+      image_dir: "C:/Users/khush/Downloads/Indian Diabetic Retinopathy Image Dataset/B. Disease Grading/1. Original Images/a. Training Set"
+      test_csv_path: "C:/Users/khush/Downloads/Indian Diabetic Retinopathy Image Dataset/B. Disease Grading/2. Groundtruths/b. IDRiD_Disease Grading_Testing Labels.csv"
+      test_image_dir: "C:/Users/khush/Downloads/Indian Diabetic Retinopathy Image Dataset/B. Disease Grading/1. Original Images/b. Testing Set"
+  id_column: "Image name"
+  label_column: "Retinopathy grade"
+  image_extension_fallback: ".jpg"
+  num_classes: 5
+  class_labels:
+    0: "No DR"
+    1: "Mild DR"
+    2: "Moderate DR"
+    3: "Severe DR"
+    4: "Proliferative DR"

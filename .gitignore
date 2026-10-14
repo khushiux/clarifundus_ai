@@ -1,0 +1,68 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+
+# Datasets (Never commit raw patient/retinal image data to Git)
+data/raw/
+data/processed/
+*.zip
+*.tar.gz
+*.tar
+
+# Model checkpoints & large binary artifacts
+artifacts/models/*.pt
+artifacts/models/*.pth
+artifacts/models/*.bin
+artifacts/models/*.onnx
+*.ckpt
+
+# Run reports and cache
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

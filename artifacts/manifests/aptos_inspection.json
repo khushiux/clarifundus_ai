@@ -1,0 +1,48 @@
+{
+  "dataset_key": "aptos",
+  "dataset_name": "APTOS 2019 Blindness Detection",
+  "csv_path": "C:\\Users\\khush\\Downloads\\aptos2019-blindness-detection\\train.csv",
+  "image_dir": "C:\\Users\\khush\\Downloads\\aptos2019-blindness-detection\\train_images",
+  "total_records": 3662,
+  "resolved_images": 3662,
+  "missing_images_count": 0,
+  "missing_images_sample": [],
+  "unreadable_images_count": 0,
+  "unreadable_images_sample": [],
+  "duplicate_images_detected": 0,
+  "duplicate_sample": [],
+  "grade_distribution": {
+    "0": {
+      "name": "No DR",
+      "count": 1805,
+      "percentage": 49.29
+    },
+    "1": {
+      "name": "Mild DR",
+      "count": 370,
+      "percentage": 10.1
+    },
+    "2": {
+      "name": "Moderate DR",
+      "count": 999,
+      "percentage": 27.28
+    },
+    "3": {
+      "name": "Severe DR",
+      "count": 193,
+      "percentage": 5.27
+    },
+    "4": {
+      "name": "Proliferative DR",
+      "count": 295,
+      "percentage": 8.06
+    }
+  },
+  "formats_detected": {
+    "PNG": 500
+  },
+  "average_dimensions": [
+    2117,
+    1585
+  ]
+}
