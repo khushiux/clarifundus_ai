@@ -46,12 +46,13 @@ data/processed/
 *.tar.gz
 *.tar
 
-# Model checkpoints & large binary artifacts
+# Model checkpoints & large binary artifacts (Exclude general weights, but track production release checkpoint)
 artifacts/models/*.pt
 artifacts/models/*.pth
 artifacts/models/*.bin
 artifacts/models/*.onnx
 *.ckpt
+!artifacts/models/resnet18_best.pt
 
 # Run reports and cache
 .pytest_cache/

@@ -95,12 +95,40 @@ def get_cached_predictor(checkpoint_path: str) -> Optional[RetinaPredictor]:
 
 @st.cache_data
 def get_curated_samples():
-    """Returns curated representative samples covering grades 0-4 from APTOS and IDRiD."""
+    """Returns curated representative samples covering grades 0-4 from bundled data/samples or manifests."""
     cfg = load_config()
+    sample_dir = resolve_path("data/samples")
+    samples = []
+
+    # 1. Prioritize self-contained bundled samples (for seamless cloud deployment)
+    if sample_dir.is_dir():
+        for f in sorted(sample_dir.glob("*.*")):
+            parts = f.stem.split("_")
+            if len(parts) >= 4 and parts[1] == "grade":
+                try:
+                    g = int(parts[2])
+                    is_aptos = (parts[0].lower() == "aptos")
+                    cid = "_".join(parts[3:])
+                    ds_name = "APTOS 2019 (In-Domain Validation)" if is_aptos else "IDRiD (Cross-Domain Benchmark Test)"
+                    label_name = f"APTOS Val — Grade {g}: {CLASS_NAMES[g]} ({cid[:8]})" if is_aptos else f"IDRiD Test (OOD) — Grade {g}: {CLASS_NAMES[g]} ({cid})"
+                    samples.append({
+                        "name": label_name,
+                        "dataset": ds_name,
+                        "id": cid,
+                        "grade": g,
+                        "description": GRADE_DESCRIPTIONS[g],
+                        "path": str(f),
+                    })
+                except Exception:
+                    continue
+
+    if samples:
+        return samples
+
+    # 2. Fallback to local manifest paths
     val_path = resolve_path(f"{cfg.paths.manifest_dir}/val_manifest.csv")
     idrid_path = resolve_path(f"{cfg.paths.manifest_dir}/idrid_test_manifest.csv")
 
-    samples = []
     if val_path.is_file():
         val_df = pd.read_csv(val_path)
         for g in range(5):
